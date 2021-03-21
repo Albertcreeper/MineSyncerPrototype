@@ -5,8 +5,78 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MineSyncerPrototype"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MineSyncer 1.0 (Prototyp)" Height="350" Width="600">
+    <Window.Background>
+        <ImageBrush ImageSource="/background.jpg" Stretch="UniformToFill"/>
+    </Window.Background>
 
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="15*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- App Title -->
+        <StackPanel Grid.Row="0" Grid.Column="1" Margin="0,25,0,0">
+            <StackPanel.Background>
+                <SolidColorBrush Color="#FF423A3A" Opacity="0.5"/>
+            </StackPanel.Background>
+
+            <Label Content="MineSyncer (Prototyp)" FontSize="32" Foreground="LightGreen"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </StackPanel>
+
+        <!-- Grid for locale and remote save folder -->
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0" Margin="0,25,0,0">
+                <Grid.Background>
+                    <SolidColorBrush Color="#FF423A3A" Opacity="0.5"/>
+                </Grid.Background>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Foreground="LightGreen" FontSize="14">MINECRAFT Speicherort</Label>
+                <TextBox Grid.Row="1" Grid.Column="0" Background="Transparent" Foreground="White" FontSize="14" Text="{Binding Path=LocalPath}"/>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="0" Margin="0,25,0,0">
+                <Grid.Background>
+                    <SolidColorBrush Color="#FF423A3A" Opacity="0.5"/>
+                </Grid.Background>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Foreground="LightGreen" FontSize="14">Remote Speicherort</Label>
+                <TextBox Grid.Row="1" Grid.Column="0" Background="Transparent" Foreground="White" FontSize="14" Text="{Binding Path=RemotePath}"/>
+            </Grid>
+        </Grid>
+
+        <!-- Button to synchronize -->
+        <Button Grid.Row="2" Grid.Column="1" Margin="0,25,0,0" 
+                    Foreground="LightGreen" FontSize="24" Height="50" Content="Synchronisieren"
+                    Command="{Binding Path=SyncCommand}">
+            <Button.Background>
+                <SolidColorBrush Color="#FF423A3A" Opacity="0.5"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
